@@ -3,3 +3,5 @@ export { default as GlobalStyle } from "./GlobalStyle";
 export { default as CovidTracker } from "./CovidApi/main";
 //Chart
 export { default as Chart } from "./CovidApi/Chart";
+//Countries
+export { default as Country } from "./CovidApi/Countries/index";
