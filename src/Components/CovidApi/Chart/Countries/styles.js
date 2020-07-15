@@ -25,10 +25,6 @@ export const Th = styled.th`
 export const Tr = styled.th`
     display: flex;
     justify-content: flex-start;
-    @media screen and (max-width: 850px) {
-        display: flex;
-        justify-content: flex-start;
-    }
 `;
 
 export const Table = styled.table``;
