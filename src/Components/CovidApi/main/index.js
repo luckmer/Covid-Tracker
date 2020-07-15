@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Chart } from "../../Export";
+import { Chart, Country } from "../../Export";
+import { Grid, Left } from "../../GlobalStyle/grid";
 //api
 const url = "https://corona.lmao.ninja/v2/all";
 //Data control
@@ -28,9 +29,14 @@ export default class CovidTracker extends React.Component {
     render() {
         const { data } = this.state;
         return (
-            <div>
-                <Chart data={data} />
-            </div>
+            <Grid>
+                <Left>
+                    <Chart data={data} />
+                </Left>
+                <div>
+                    <Country />
+                </div>
+            </Grid>
         );
     }
 }

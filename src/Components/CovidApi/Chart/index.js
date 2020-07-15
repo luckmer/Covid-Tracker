@@ -31,10 +31,6 @@ const Chart = ({ data: { cases, todayCases, deaths, todayDeaths } }) => {
         ],
     };
 
-    return (
-        <div>
-            <HorizontalBar data={data} />
-        </div>
-    );
+    return <HorizontalBar data={data} />;
 };
 export default Chart;
