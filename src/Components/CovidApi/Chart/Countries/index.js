@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Img, Td, Th, Tr, Table, Input } from "./styles";
+import { Img, Td, Th, Tr, Input, Div } from "./styles";
 const url = `https://corona.lmao.ninja/v2/countries`;
 export default class Country extends React.Component {
     state = {
@@ -37,19 +37,19 @@ export default class Country extends React.Component {
                 {this.state.loading ? (
                     <h1> Loading...</h1>
                 ) : (
-                    <Table>
+                    <table>
                         <thead>
+                            <Div>
+                                <Input
+                                    placeholder="Search"
+                                    value={this.state.Find}
+                                    onChange={this.handleInputChange}
+                                />
+                            </Div>
                             <Td>
                                 <Th>confirmed</Th>
                                 <Th>Deaths</Th>
                                 <Th>population</Th>
-                                <Th>
-                                    <Input
-                                        placeholder="Search"
-                                        value={this.state.Find}
-                                        onChange={this.handleInputChange}
-                                    />
-                                </Th>
                             </Td>
                         </thead>
                         {filteredData.map((country) => (
@@ -73,7 +73,7 @@ export default class Country extends React.Component {
                                 </tbody>
                             </div>
                         ))}
-                    </Table>
+                    </table>
                 )}
             </>
         );

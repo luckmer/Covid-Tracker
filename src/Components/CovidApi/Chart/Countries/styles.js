@@ -26,11 +26,14 @@ export const Tr = styled.th`
     display: flex;
     justify-content: flex-start;
 `;
-
-export const Table = styled.table``;
-export const Input = styled.input`
-    height: 2em;
-    border: none;
-    border-radius: 2px;
+export const Div = styled.div`
+    padding: 10px 0 5px;
     display: flex;
+    justify-content: center;
+`;
+export const Input = styled.input`
+    border: none;
+    font-size: 15px;
+    border-radius: 2px;
+    padding: 5px 0 5px 0;
 `;
