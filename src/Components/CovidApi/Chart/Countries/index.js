@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Img, Td, Th, Tr, Input, Div } from "./styles";
 const url = `https://corona.lmao.ninja/v2/countries`;
-export default class Country extends React.Component {
+
+class Country extends React.Component {
     state = {
         Find: "",
         countries: [],
@@ -79,3 +80,5 @@ export default class Country extends React.Component {
         );
     }
 }
+
+export default Country;

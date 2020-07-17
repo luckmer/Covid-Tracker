@@ -16,7 +16,7 @@ const Data = async () => {
     }
 };
 
-export default class CovidTracker extends React.Component {
+class CovidTracker extends React.Component {
     state = {
         data: "",
     };
@@ -40,3 +40,5 @@ export default class CovidTracker extends React.Component {
         );
     }
 }
+
+export default CovidTracker;
