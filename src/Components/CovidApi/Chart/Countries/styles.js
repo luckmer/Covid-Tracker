@@ -28,3 +28,9 @@ export const Tr = styled.th`
 `;
 
 export const Table = styled.table``;
+export const Input = styled.input`
+    height: 2em;
+    border: none;
+    border-radius: 2px;
+    display: flex;
+`;

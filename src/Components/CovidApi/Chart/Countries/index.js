@@ -1,11 +1,26 @@
 import React from "react";
 import axios from "axios";
-import { Img, Td, Th, Tr, Table } from "./styles";
+import { Img, Td, Th, Tr, Table, Input } from "./styles";
 const url = `https://corona.lmao.ninja/v2/countries`;
 export default class Country extends React.Component {
     state = {
+        Find: "",
         countries: [],
+        filteredData: [],
         loading: true,
+    };
+
+    handleInputChange = (e) => {
+        let Find = e.target.value;
+        this.setState((S) => {
+            const filteredData = S.countries.filter((i) => {
+                return i.country.toLowerCase().includes(Find.toLowerCase());
+            });
+            return {
+                Find,
+                filteredData,
+            };
+        });
     };
 
     componentDidMount() {
@@ -16,7 +31,7 @@ export default class Country extends React.Component {
     }
 
     render() {
-        const { countries } = this.state;
+        const { filteredData } = this.state;
         return (
             <>
                 {this.state.loading ? (
@@ -28,9 +43,16 @@ export default class Country extends React.Component {
                                 <Th>confirmed</Th>
                                 <Th>Deaths</Th>
                                 <Th>population</Th>
+                                <Th>
+                                    <Input
+                                        placeholder="Search"
+                                        value={this.state.Find}
+                                        onChange={this.handleInputChange}
+                                    />
+                                </Th>
                             </Td>
                         </thead>
-                        {countries.map((country) => (
+                        {filteredData.map((country) => (
                             <div key={country.country}>
                                 <thead>
                                     <Tr>{country.country}</Tr>
