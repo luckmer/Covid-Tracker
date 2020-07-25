@@ -32,10 +32,10 @@ class Country extends React.Component {
     }
 
     render() {
-        const { filteredData } = this.state;
+        const { filteredData, loading, Find } = this.state;
         return (
             <>
-                {this.state.loading ? (
+                {loading ? (
                     <h1> Loading...</h1>
                 ) : (
                     <table>
@@ -43,7 +43,7 @@ class Country extends React.Component {
                             <Div>
                                 <Input
                                     placeholder="Search"
-                                    value={this.state.Find}
+                                    value={Find}
                                     onChange={this.handleInputChange}
                                 />
                             </Div>
