@@ -1,7 +1,5 @@
 import React from "react";
 import { CovidTracker } from "./Components/Export";
-function App() {
-    return <CovidTracker />;
-}
+const App = () => <CovidTracker />;
 
 export default App;
