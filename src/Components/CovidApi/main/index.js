@@ -1,20 +1,7 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React from "react";
+import Data from "./api";
 import { Chart, Country } from "../../Export";
 import { Grid, Left, Right } from "../../GlobalStyle/grid";
-//api
-const url = "https://corona.lmao.ninja/v2/all";
-//Data control
-const Data = async () => {
-    try {
-        const {
-            data: { cases, todayCases, deaths, todayDeaths, updated },
-        } = await axios.get(url);
-        return { cases, todayCases, deaths, todayDeaths, updated };
-    } catch (error) {
-        return error;
-    }
-};
 
 class CovidTracker extends React.Component {
     state = {
@@ -22,7 +9,6 @@ class CovidTracker extends React.Component {
     };
     async componentDidMount() {
         const data = await Data();
-        console.log(data);
         this.setState({ data });
     }
 
