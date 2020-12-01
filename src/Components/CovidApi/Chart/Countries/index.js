@@ -1,41 +1,50 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import axios from "axios";
-import { Img, Td, Th, Tr, Input, Div } from "./styles";
+import { Img, Td, Th, Tr, Input, Div } from "../../../../styles/styles";
 const url = `https://corona.lmao.ninja/v2/countries`;
 
-class Country extends React.Component {
-    state = {
-        Find: "",
+
+function Country()
+{
+    const [state, setState] = useState({
         countries: [],
-        filteredData: [],
         loading: true,
-    };
+    });
+    const [filteredData, setFilteredData] = useState([]); 
+    const [search, setSearch] = useState({
+        filterCountry:"",
+    });
 
-    handleInputChange = (e) => {
-        let Find = e.target.value;
-        this.setState((S) => {
-            const filteredData = S.countries.filter((i) => {
-                return i.country.toLowerCase().includes(Find.toLowerCase());
-            });
-            return {
-                Find,
-                filteredData,
-            };
+    useEffect(() =>{
+        axios.get(url).then((res) =>{
+            const country = res.data;
+            setState({ countries: country, loading: false });
         });
-    };
+    }, []);
 
-    componentDidMount() {
-        axios.get(url).then((res) => {
-            const countries = res.data;
-            this.setState({ countries, loading: false });
-        });
-    }
+    useEffect(() => {
+        let filterS = state.countries;
+        if (search.filterCountry) {
+            filterS = filterS.filter((item) =>
+                item.country
+                    .toLowerCase()
+                    .includes(
+                        search.filterCountry
+                            .toLowerCase()
+                            .trim()
+                    ),
+            );
+        };
+        setFilteredData(filterS)
+    }, [search.filterCountry,state.countries])
 
-    render() {
-        const { filteredData, loading, Find } = this.state;
+    const handleInputChange = (e) =>{
+            setSearch({ ...search, [e.target.name]: e.target.value });
+        };
+        
         return (
             <>
-                {loading ? (
+                {state.loading ? (
                     <h1> Loading...</h1>
                 ) : (
                     <table>
@@ -43,8 +52,9 @@ class Country extends React.Component {
                             <Div>
                                 <Input
                                     placeholder="Search"
-                                    value={Find}
-                                    onChange={this.handleInputChange}
+                                        value={search.filterCountry}
+                                        name="filterCountry"
+                                    onChange={handleInputChange}
                                 />
                             </Div>
                             <Td>
@@ -77,8 +87,7 @@ class Country extends React.Component {
                     </table>
                 )}
             </>
-        );
-    }
+    )
 }
 
 export default Country;
