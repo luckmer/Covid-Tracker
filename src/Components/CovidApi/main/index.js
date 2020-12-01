@@ -1,19 +1,24 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Data from "./api";
 import { Chart, Country } from "../../Export";
-import { Grid, Left, Right } from "../../GlobalStyle/grid";
+import { Grid, Left, Right } from "../../../styles/grid";
 
-class CovidTracker extends React.Component {
-    state = {
+
+const CovidTracker = () =>
+{
+    const [state, setState] = useState({
         data: "",
-    };
-    async componentDidMount() {
-        const data = await Data();
-        this.setState({ data });
-    }
+    });
 
-    render() {
-        const { data } = this.state;
+    useEffect(()=> {
+        const data = async ()=> {
+            const data = await Data();
+            setState({ data })
+        }
+        data();
+    }, [])
+    
+        const { data } = state;
         return (
             <Grid>
                 <Left>
@@ -24,7 +29,7 @@ class CovidTracker extends React.Component {
                 </Right>
             </Grid>
         );
-    }
+    
 }
 
 export default CovidTracker;
