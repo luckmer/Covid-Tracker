@@ -1,5 +1,7 @@
 import axios from "axios";
 const url = "https://corona.lmao.ninja/v2/all";
+
+
 const Data = async () => {
     try {
         const {
