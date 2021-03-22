@@ -1,3 +1,4 @@
 ## Covid Tracker
 
-![Image of the landing page](https://i.imgur.com/fbeRJON.png)
+![Image of the landing page](https://imgur.com/WFftNs0.png)
+![](https://imgur.com/W9qiPAV.png)
